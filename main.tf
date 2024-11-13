@@ -26,6 +26,12 @@ resource "proxmox_virtual_environment_vm" "nasi-uduk-D05" {
   scsi_hardware   = "virtio-scsi-single"
   vm_id           = lookup(var.vm_id_list, "nasi-uduk-D05")
 
+  clone {
+    datastore_id = ""
+    node_name    = ""
+    vm_id        = 5555
+  }
+
   agent {
     enabled = false
   }
@@ -77,6 +83,12 @@ resource "proxmox_virtual_environment_vm" "geprek-D05" {
   stop_on_destroy = true
   scsi_hardware   = "virtio-scsi-single"
   vm_id           = lookup(var.vm_id_list, "geprek-D05")
+
+  clone {
+    datastore_id = ""
+    node_name    = ""
+    vm_id        = 5555
+  }
 
   agent {
     enabled = false
@@ -130,6 +142,12 @@ resource "proxmox_virtual_environment_vm" "kwetiaw-D05" {
   scsi_hardware   = "virtio-scsi-single"
   vm_id           = lookup(var.vm_id_list, "kwetiaw-D05")
 
+  clone {
+    datastore_id = ""
+    node_name    = ""
+    vm_id        = 5555
+  }
+
   agent {
     enabled = false
   }
@@ -181,6 +199,12 @@ resource "proxmox_virtual_environment_vm" "tahu-tek-D05" {
   stop_on_destroy = true
   scsi_hardware   = "virtio-scsi-single"
   vm_id           = lookup(var.vm_id_list, "tahu-tek-D05")
+
+  clone {
+    datastore_id = ""
+    node_name    = ""
+    vm_id        = 5555
+  }
 
   agent {
     enabled = false
@@ -234,6 +258,12 @@ resource "proxmox_virtual_environment_vm" "sego-jamur-D05" {
   scsi_hardware   = "virtio-scsi-single"
   vm_id           = lookup(var.vm_id_list, "sego-jamur-D05")
 
+  clone {
+    datastore_id = ""
+    node_name    = ""
+    vm_id        = 5555
+  }
+
   agent {
     enabled = false
   }
@@ -285,6 +315,12 @@ resource "proxmox_virtual_environment_vm" "ikan-fillet-D05" {
   stop_on_destroy = true
   scsi_hardware   = "virtio-scsi-single"
   vm_id           = lookup(var.vm_id_list, "ikan-fillet-D05")
+
+  clone {
+    datastore_id = ""
+    node_name    = ""
+    vm_id        = 5555
+  }
 
   agent {
     enabled = false
@@ -338,6 +374,12 @@ resource "proxmox_virtual_environment_vm" "naspad-D05" {
   scsi_hardware   = "virtio-scsi-single"
   vm_id           = lookup(var.vm_id_list, "naspad-D05")
 
+  clone {
+    datastore_id = ""
+    node_name    = ""
+    vm_id        = 5555
+  }
+
   agent {
     enabled = false
   }
@@ -389,6 +431,12 @@ resource "proxmox_virtual_environment_vm" "pangsit-D05" {
   stop_on_destroy = true
   scsi_hardware   = "virtio-scsi-single"
   vm_id           = lookup(var.vm_id_list, "pangsit-D05")
+
+  clone {
+    datastore_id = ""
+    node_name    = ""
+    vm_id        = 5555
+  }
 
   agent {
     enabled = false
@@ -445,6 +493,12 @@ resource "proxmox_virtual_environment_vm" "alfamart-D05" {
   scsi_hardware       = "virtio-scsi-single"
   vm_id               = lookup(var.vm_id_list, "alfamart-D05")
   hook_script_file_id = proxmox_virtual_environment_file.script1.id
+
+  clone {
+    datastore_id = ""
+    node_name    = ""
+    vm_id        = 5555
+  }
 
   agent {
     enabled = true
@@ -518,6 +572,12 @@ resource "proxmox_virtual_environment_vm" "indomaret-D05" {
   vm_id               = lookup(var.vm_id_list, "indomaret-D05")
   hook_script_file_id = proxmox_virtual_environment_file.script1.id
 
+  clone {
+    datastore_id = ""
+    node_name    = ""
+    vm_id        = 5555
+  }
+
   agent {
     enabled = true
   }
@@ -579,6 +639,12 @@ resource "proxmox_virtual_environment_vm" "family-mart-D05" {
   scsi_hardware       = "virtio-scsi-single"
   vm_id               = lookup(var.vm_id_list, "family-mart-D05")
   hook_script_file_id = proxmox_virtual_environment_file.script1.id
+
+  clone {
+    datastore_id = ""
+    node_name    = ""
+    vm_id        = 5555
+  }
 
   agent {
     enabled = true
@@ -642,6 +708,12 @@ resource "proxmox_virtual_environment_vm" "its-mart-D05" {
   vm_id               = lookup(var.vm_id_list, "its-mart-D05")
   hook_script_file_id = proxmox_virtual_environment_file.script1.id
 
+  clone {
+    datastore_id = ""
+    node_name    = ""
+    vm_id        = 5555
+  }
+
   agent {
     enabled = true
   }
@@ -703,6 +775,12 @@ resource "proxmox_virtual_environment_vm" "superindo-D05" {
   scsi_hardware       = "virtio-scsi-single"
   vm_id               = lookup(var.vm_id_list, "superindo-D05")
   hook_script_file_id = proxmox_virtual_environment_file.script1.id
+
+  clone {
+    datastore_id = "local-lvm"
+    node_name    = "its"
+    vm_id        = 5555
+  }
 
   agent {
     enabled = true
@@ -775,6 +853,12 @@ resource "proxmox_virtual_environment_vm" "sakinah-D05" {
   scsi_hardware       = "virtio-scsi-single"
   vm_id               = lookup(var.vm_id_list, "sakinah-D05")
   hook_script_file_id = proxmox_virtual_environment_file.script1.id
+
+  clone {
+    datastore_id = ""
+    node_name    = ""
+    vm_id        = 5555
+  }
 
   agent {
     enabled = true
