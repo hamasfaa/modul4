@@ -42,20 +42,29 @@ variable "vm_id_list" {
 variable "ip_list" {
   type = map(string)
   default = {
-    "nasi-uduk-D05"   = H4H4H4H4
-    "geprek-D05"      = H4H4H4H4
-    "kwetiaw-D05"     = H4H4H4H4
-    "tahu-tek-D05"    = H4H4H4H4
-    "sego-jamur-D05"  = H4H4H4H4
-    "ikan-fillet-D05" = H4H4H4H4
-    "naspad-D05"      = H4H4H4H4
-    "pangsit-D05"     = H4H4H4H4
-    "alfamart-D05"    = H4H4H4H4
-    "indomaret-D05"   = H4H4H4H4
-    "family-mart-D05" = H4H4H4H4
-    "its-mart-D05"    = H4H4H4H4
-    "superindo-D05"   = H4H4H4H4
-    "sakinah-D05"     = H4H4H4H4
+    "nasi-uduk-D05"        = H4H4H4H4
+    "geprek-D05"           = H4H4H4H4
+    "kwetiaw-D05"          = H4H4H4H4
+    "tahu-tek-D05"         = H4H4H4H4
+    "sego-jamur-D05"       = H4H4H4H4
+    "ikan-fillet-D05"      = H4H4H4H4
+    "naspad-D05"           = H4H4H4H4
+    "pangsit-D05"          = H4H4H4H4
+    "alfamart-D05-eth0"    = H4H4H4H4
+    "alfamart-D05-eth1"    = H4H4H4H4
+    "alfamart-D05-eth2"    = H4H4H4H4
+    "indomaret-D05-eth0"   = H4H4H4H4
+    "indomaret-D05-eth1"   = H4H4H4H4
+    "family-mart-D05-eth0" = H4H4H4H4
+    "family-mart-D05-eth1" = H4H4H4H4
+    "family-mart-D05-eth2" = H4H4H4H4
+    "its-mart-D05-eth0"    = H4H4H4H4
+    "its-mart-D05-eth1"    = H4H4H4H4
+    "superindo-D05-eth0"   = H4H4H4H4
+    "superindo-D05-eth1"   = H4H4H4H4
+    "superindo-D05-eth2"   = H4H4H4H4
+    "sakinah-D05-eth0"     = H4H4H4H4
+    "sakinah-D05-eth1"     = H4H4H4H4
   }
 }
 
@@ -70,11 +79,5 @@ variable "gateaway_list" {
     "ikan-fillet-D05" = H4H4H4H4
     "naspad-D05"      = H4H4H4H4
     "pangsit-D05"     = H4H4H4H4
-    "alfamart-D05"    = H4H4H4H4
-    "indomaret-D05"   = H4H4H4H4
-    "family-mart-D05" = H4H4H4H4
-    "its-mart-D05"    = H4H4H4H4
-    "superindo-D05"   = H4H4H4H4
-    "sakinah-D05"     = H4H4H4H4
   }
 }
