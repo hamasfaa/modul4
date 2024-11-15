@@ -15,6 +15,19 @@ provider "proxmox" {
 }
 
 # ====================
+# FILE
+# ====================
+resource "proxmox_virtual_environment_file" "script1" {
+  content_type = "snippets"
+  datastore_id = "local"
+  node_name    = "its"
+  file_mode    = "0700"
+  source_file {
+    path = "./script1.sh"
+  }
+}
+
+# ====================
 # HOST
 # ====================
 # NASI UDUK
@@ -485,429 +498,429 @@ resource "proxmox_virtual_environment_vm" "pangsit-D05" {
 # ROUTER
 # ====================
 # ALFAMART 
-resource "proxmox_virtual_environment_vm" "alfamart-D05" {
-  name                = "alfamart-D05"
-  node_name           = "its"
-  on_boot             = true
-  stop_on_destroy     = true
-  scsi_hardware       = "virtio-scsi-single"
-  vm_id               = lookup(var.vm_id_list, "alfamart-D05")
-  hook_script_file_id = proxmox_virtual_environment_file.script1.id
+# resource "proxmox_virtual_environment_vm" "alfamart-D05" {
+#   name                = "alfamart-D05"
+#   node_name           = "its"
+#   on_boot             = true
+#   stop_on_destroy     = true
+#   scsi_hardware       = "virtio-scsi-single"
+#   vm_id               = lookup(var.vm_id_list, "alfamart-D05")
+#   hook_script_file_id = proxmox_virtual_environment_file.script1.id
 
-  clone {
-    datastore_id = "local-lvm"
-    node_name    = "its"
-    vm_id        = 5555
-  }
+#   clone {
+#     datastore_id = "local-lvm"
+#     node_name    = "its"
+#     vm_id        = 5555
+#   }
 
-  agent {
-    enabled = true
-  }
+#   agent {
+#     enabled = true
+#   }
 
-  initialization {
-    ip_config { #eth0
-      ipv4 {
-        address = lookup(var.ip_list, "alfamart-D05-eth0")
-      }
-    }
-    ip_config { #eth1
-      ipv4 {
-        address = lookup(var.ip_list, "alfamart-D05-eth1")
-      }
-    }
-    ip_config { #eth2
-      ipv4 {
-        address = lookup(var.ip_list, "alfamart-D05-eth2")
-      }
-    }
-    user_account {
-      username = "ukashitam"
-      password = "hitamlegam"
-    }
-  }
+#   initialization {
+#     ip_config { #eth0
+#       ipv4 {
+#         address = lookup(var.ip_list, "alfamart-D05-eth0")
+#       }
+#     }
+#     ip_config { #eth1
+#       ipv4 {
+#         address = lookup(var.ip_list, "alfamart-D05-eth1")
+#       }
+#     }
+#     ip_config { #eth2
+#       ipv4 {
+#         address = lookup(var.ip_list, "alfamart-D05-eth2")
+#       }
+#     }
+#     user_account {
+#       username = "ukashitam"
+#       password = "hitamlegam"
+#     }
+#   }
 
-  cpu {
-    cores = 1
-    type  = "x86-64-v2-AES"
-  }
+#   cpu {
+#     cores = 1
+#     type  = "x86-64-v2-AES"
+#   }
 
-  memory {
-    dedicated = 1024 # 1GB
-    floating  = 1024
-  }
+#   memory {
+#     dedicated = 1024 # 1GB
+#     floating  = 1024
+#   }
 
-  disk {
-    datastore_id = "local-lvm"
-    file_id      = "local:iso/focal-server-cloudimg-amd64.img"
-    file_format  = "raw"
-    interface    = "virtio0"
-    iothread     = true
-    size         = 3 # GB
-  }
+#   disk {
+#     datastore_id = "local-lvm"
+#     file_id      = "local:iso/focal-server-cloudimg-amd64.img"
+#     file_format  = "raw"
+#     interface    = "virtio0"
+#     iothread     = true
+#     size         = 3 # GB
+#   }
 
-  network_device {
-    enabled  = true
-    firewall = false
-    bridge   = "vmbr0"
-  }
-  network_device {
-    enabled  = true
-    firewall = false
-    bridge   = "vmbr0"
-  }
-  network_device {
-    enabled  = true
-    firewall = false
-    bridge   = "vmbr0"
-  }
-}
+#   network_device {
+#     enabled  = true
+#     firewall = false
+#     bridge   = "vmbr0"
+#   }
+#   network_device {
+#     enabled  = true
+#     firewall = false
+#     bridge   = "vmbr0"
+#   }
+#   network_device {
+#     enabled  = true
+#     firewall = false
+#     bridge   = "vmbr0"
+#   }
+# }
 
-# INDOMARET
-resource "proxmox_virtual_environment_vm" "indomaret-D05" {
-  name                = "indomaret-D05"
-  node_name           = "its"
-  on_boot             = true
-  stop_on_destroy     = true
-  scsi_hardware       = "virtio-scsi-single"
-  vm_id               = lookup(var.vm_id_list, "indomaret-D05")
-  hook_script_file_id = proxmox_virtual_environment_file.script1.id
+# # INDOMARET
+# resource "proxmox_virtual_environment_vm" "indomaret-D05" {
+#   name                = "indomaret-D05"
+#   node_name           = "its"
+#   on_boot             = true
+#   stop_on_destroy     = true
+#   scsi_hardware       = "virtio-scsi-single"
+#   vm_id               = lookup(var.vm_id_list, "indomaret-D05")
+#   hook_script_file_id = proxmox_virtual_environment_file.script1.id
 
-  clone {
-    datastore_id = "local-lvm"
-    node_name    = "its"
-    vm_id        = 5555
-  }
+#   clone {
+#     datastore_id = "local-lvm"
+#     node_name    = "its"
+#     vm_id        = 5555
+#   }
 
-  agent {
-    enabled = true
-  }
+#   agent {
+#     enabled = true
+#   }
 
-  initialization {
-    ip_config { #eth0
-      ipv4 {
-        address = lookup(var.ip_list, "indomaret-D05-eth0")
-      }
-    }
-    ip_config { #eth1
-      ipv4 {
-        address = lookup(var.ip_list, "indomaret-D05-eth1")
-      }
-    }
-    user_account {
-      username = "ukashitam"
-      password = "hitamlegam"
-    }
-  }
+#   initialization {
+#     ip_config { #eth0
+#       ipv4 {
+#         address = lookup(var.ip_list, "indomaret-D05-eth0")
+#       }
+#     }
+#     ip_config { #eth1
+#       ipv4 {
+#         address = lookup(var.ip_list, "indomaret-D05-eth1")
+#       }
+#     }
+#     user_account {
+#       username = "ukashitam"
+#       password = "hitamlegam"
+#     }
+#   }
 
-  cpu {
-    cores = 1
-    type  = "x86-64-v2-AES"
-  }
+#   cpu {
+#     cores = 1
+#     type  = "x86-64-v2-AES"
+#   }
 
-  memory {
-    dedicated = 1024 # 1GB
-    floating  = 1024
-  }
+#   memory {
+#     dedicated = 1024 # 1GB
+#     floating  = 1024
+#   }
 
-  disk {
-    datastore_id = "local-lvm"
-    file_id      = "local:iso/focal-server-cloudimg-amd64.img"
-    file_format  = "raw"
-    interface    = "virtio0"
-    iothread     = true
-    size         = 3 # GB
-  }
+#   disk {
+#     datastore_id = "local-lvm"
+#     file_id      = "local:iso/focal-server-cloudimg-amd64.img"
+#     file_format  = "raw"
+#     interface    = "virtio0"
+#     iothread     = true
+#     size         = 3 # GB
+#   }
 
-  network_device {
-    enabled  = true
-    firewall = false
-    bridge   = "vmbr0"
-  }
-  network_device {
-    enabled  = true
-    firewall = false
-    bridge   = "vmbr0"
-  }
-}
+#   network_device {
+#     enabled  = true
+#     firewall = false
+#     bridge   = "vmbr0"
+#   }
+#   network_device {
+#     enabled  = true
+#     firewall = false
+#     bridge   = "vmbr0"
+#   }
+# }
 
-# FAMILY MART
-resource "proxmox_virtual_environment_vm" "family-mart-D05" {
-  name                = "family-mart-D05"
-  node_name           = "its"
-  on_boot             = true
-  stop_on_destroy     = true
-  scsi_hardware       = "virtio-scsi-single"
-  vm_id               = lookup(var.vm_id_list, "family-mart-D05")
-  hook_script_file_id = proxmox_virtual_environment_file.script1.id
+# # FAMILY MART
+# resource "proxmox_virtual_environment_vm" "family-mart-D05" {
+#   name                = "family-mart-D05"
+#   node_name           = "its"
+#   on_boot             = true
+#   stop_on_destroy     = true
+#   scsi_hardware       = "virtio-scsi-single"
+#   vm_id               = lookup(var.vm_id_list, "family-mart-D05")
+#   hook_script_file_id = proxmox_virtual_environment_file.script1.id
 
-  clone {
-    datastore_id = "local-lvm"
-    node_name    = "its"
-    vm_id        = 5555
-  }
+#   clone {
+#     datastore_id = "local-lvm"
+#     node_name    = "its"
+#     vm_id        = 5555
+#   }
 
-  agent {
-    enabled = true
-  }
+#   agent {
+#     enabled = true
+#   }
 
-  initialization {
-    ip_config { #eth0
-      ipv4 {
-        address = lookup(var.ip_list, "family-mart-D05-eth0")
-      }
-    }
-    ip_config { #eth1
-      ipv4 {
-        address = lookup(var.ip_list, "family-mart-D05-eth1")
-      }
-    }
-    user_account {
-      username = "ukashitam"
-      password = "hitamlegam"
-    }
-  }
+#   initialization {
+#     # ip_config { #eth0
+#     #   ipv4 {
+#     #     address = lookup(var.ip_list, "family-mart-D05-eth0")
+#     #   }
+#     # }
+#     ip_config { #eth1
+#       ipv4 {
+#         address = lookup(var.ip_list, "family-mart-D05-eth1")
+#       }
+#     }
+#     user_account {
+#       username = "ukashitam"
+#       password = "hitamlegam"
+#     }
+#   }
 
-  cpu {
-    cores = 1
-    type  = "x86-64-v2-AES"
-  }
+#   cpu {
+#     cores = 1
+#     type  = "x86-64-v2-AES"
+#   }
 
-  memory {
-    dedicated = 1024 # 1GB
-    floating  = 1024
-  }
+#   memory {
+#     dedicated = 1024 # 1GB
+#     floating  = 1024
+#   }
 
-  disk {
-    datastore_id = "local-lvm"
-    file_id      = "local:iso/focal-server-cloudimg-amd64.img"
-    file_format  = "raw"
-    interface    = "virtio0"
-    iothread     = true
-    size         = 3 # GB
-  }
+#   disk {
+#     datastore_id = "local-lvm"
+#     file_id      = "local:iso/focal-server-cloudimg-amd64.img"
+#     file_format  = "raw"
+#     interface    = "virtio0"
+#     iothread     = true
+#     size         = 3 # GB
+#   }
 
-  network_device {
-    enabled  = true
-    firewall = false
-    bridge   = "vmbr0"
-  }
-  network_device {
-    enabled  = true
-    firewall = false
-    bridge   = "vmbr0"
-  }
-}
+#   network_device {
+#     enabled  = true
+#     firewall = false
+#     bridge   = "vmbr0"
+#   }
+#   network_device {
+#     enabled  = true
+#     firewall = false
+#     bridge   = "vmbr0"
+#   }
+# }
 
-# ITS MART
-resource "proxmox_virtual_environment_vm" "its-mart-D05" {
-  name                = "its-mart-D05"
-  node_name           = "its"
-  on_boot             = true
-  stop_on_destroy     = true
-  scsi_hardware       = "virtio-scsi-single"
-  vm_id               = lookup(var.vm_id_list, "its-mart-D05")
-  hook_script_file_id = proxmox_virtual_environment_file.script1.id
+# # ITS MART
+# resource "proxmox_virtual_environment_vm" "its-mart-D05" {
+#   name                = "its-mart-D05"
+#   node_name           = "its"
+#   on_boot             = true
+#   stop_on_destroy     = true
+#   scsi_hardware       = "virtio-scsi-single"
+#   vm_id               = lookup(var.vm_id_list, "its-mart-D05")
+#   hook_script_file_id = proxmox_virtual_environment_file.script1.id
 
-  clone {
-    datastore_id = "local-lvm"
-    node_name    = "its"
-    vm_id        = 5555
-  }
+#   clone {
+#     datastore_id = "local-lvm"
+#     node_name    = "its"
+#     vm_id        = 5555
+#   }
 
-  agent {
-    enabled = true
-  }
+#   agent {
+#     enabled = true
+#   }
 
-  initialization {
-    ip_config { #eth0
-      ipv4 {
-        address = lookup(var.ip_list, "its-mart-D05-eth0")
-      }
-    }
-    ip_config { #eth1
-      ipv4 {
-        address = lookup(var.ip_list, "its-mart-D05-eth1")
-      }
-    }
-    user_account {
-      username = "ukashitam"
-      password = "hitamlegam"
-    }
-  }
+#   initialization {
+#     ip_config { #eth0
+#       ipv4 {
+#         address = lookup(var.ip_list, "its-mart-D05-eth0")
+#       }
+#     }
+#     ip_config { #eth1
+#       ipv4 {
+#         address = lookup(var.ip_list, "its-mart-D05-eth1")
+#       }
+#     }
+#     user_account {
+#       username = "ukashitam"
+#       password = "hitamlegam"
+#     }
+#   }
 
-  cpu {
-    cores = 1
-    type  = "x86-64-v2-AES"
-  }
+#   cpu {
+#     cores = 1
+#     type  = "x86-64-v2-AES"
+#   }
 
-  memory {
-    dedicated = 1024 # 1GB
-    floating  = 1024
-  }
+#   memory {
+#     dedicated = 1024 # 1GB
+#     floating  = 1024
+#   }
 
-  disk {
-    datastore_id = "local-lvm"
-    file_id      = "local:iso/focal-server-cloudimg-amd64.img"
-    file_format  = "raw"
-    interface    = "virtio0"
-    iothread     = true
-    size         = 3 # GB
-  }
+#   disk {
+#     datastore_id = "local-lvm"
+#     file_id      = "local:iso/focal-server-cloudimg-amd64.img"
+#     file_format  = "raw"
+#     interface    = "virtio0"
+#     iothread     = true
+#     size         = 3 # GB
+#   }
 
-  network_device {
-    enabled  = true
-    firewall = false
-    bridge   = "vmbr0"
-  }
-  network_device {
-    enabled  = true
-    firewall = false
-    bridge   = "vmbr0"
-  }
-}
+#   network_device {
+#     enabled  = true
+#     firewall = false
+#     bridge   = "vmbr0"
+#   }
+#   network_device {
+#     enabled  = true
+#     firewall = false
+#     bridge   = "vmbr0"
+#   }
+# }
 
-# SUPERINDO
-resource "proxmox_virtual_environment_vm" "superindo-D05" {
-  name                = "superindo-D05"
-  node_name           = "its"
-  on_boot             = true
-  stop_on_destroy     = true
-  scsi_hardware       = "virtio-scsi-single"
-  vm_id               = lookup(var.vm_id_list, "superindo-D05")
-  hook_script_file_id = proxmox_virtual_environment_file.script1.id
+# # SUPERINDO
+# resource "proxmox_virtual_environment_vm" "superindo-D05" {
+#   name                = "superindo-D05"
+#   node_name           = "its"
+#   on_boot             = true
+#   stop_on_destroy     = true
+#   scsi_hardware       = "virtio-scsi-single"
+#   vm_id               = lookup(var.vm_id_list, "superindo-D05")
+#   hook_script_file_id = proxmox_virtual_environment_file.script1.id
 
-  clone {
-    datastore_id = "local-lvm"
-    node_name    = "its"
-    vm_id        = 5555
-  }
+#   clone {
+#     datastore_id = "local-lvm"
+#     node_name    = "its"
+#     vm_id        = 5555
+#   }
 
-  agent {
-    enabled = true
-  }
+#   agent {
+#     enabled = true
+#   }
 
-  initialization {
-    ip_config { #eth0
-      ipv4 {
-        address = lookup(var.ip_list, "superindo-D05-eth0")
-      }
-    }
-    ip_config { #eth1
-      ipv4 {
-        address = lookup(var.ip_list, "superindo-D05-eth1")
-      }
-    }
-    ip_config { #eth2
-      ipv4 {
-        address = lookup(var.ip_list, "superindo-D05-eth2")
-      }
-    }
-    user_account {
-      username = "ukashitam"
-      password = "hitamlegam"
-    }
-  }
+#   initialization {
+#     ip_config { #eth0
+#       ipv4 {
+#         address = lookup(var.ip_list, "superindo-D05-eth0")
+#       }
+#     }
+#     ip_config { #eth1
+#       ipv4 {
+#         address = lookup(var.ip_list, "superindo-D05-eth1")
+#       }
+#     }
+#     ip_config { #eth2
+#       ipv4 {
+#         address = lookup(var.ip_list, "superindo-D05-eth2")
+#       }
+#     }
+#     user_account {
+#       username = "ukashitam"
+#       password = "hitamlegam"
+#     }
+#   }
 
-  cpu {
-    cores = 1
-    type  = "x86-64-v2-AES"
-  }
+#   cpu {
+#     cores = 1
+#     type  = "x86-64-v2-AES"
+#   }
 
-  memory {
-    dedicated = 1024 # 1GB
-    floating  = 1024
-  }
+#   memory {
+#     dedicated = 1024 # 1GB
+#     floating  = 1024
+#   }
 
-  disk {
-    datastore_id = "local-lvm"
-    file_id      = "local:iso/focal-server-cloudimg-amd64.img"
-    file_format  = "raw"
-    interface    = "virtio0"
-    iothread     = true
-    size         = 3 # GB
-  }
+#   disk {
+#     datastore_id = "local-lvm"
+#     file_id      = "local:iso/focal-server-cloudimg-amd64.img"
+#     file_format  = "raw"
+#     interface    = "virtio0"
+#     iothread     = true
+#     size         = 3 # GB
+#   }
 
-  network_device {
-    enabled  = true
-    firewall = false
-    bridge   = "vmbr0"
-  }
-  network_device {
-    enabled  = true
-    firewall = false
-    bridge   = "vmbr0"
-  }
-  network_device {
-    enabled  = true
-    firewall = false
-    bridge   = "vmbr0"
-  }
-}
+#   network_device {
+#     enabled  = true
+#     firewall = false
+#     bridge   = "vmbr0"
+#   }
+#   network_device {
+#     enabled  = true
+#     firewall = false
+#     bridge   = "vmbr0"
+#   }
+#   network_device {
+#     enabled  = true
+#     firewall = false
+#     bridge   = "vmbr0"
+#   }
+# }
 
-# SAKINAH
-resource "proxmox_virtual_environment_vm" "sakinah-D05" {
-  name                = "sakinah-D05"
-  node_name           = "its"
-  on_boot             = true
-  stop_on_destroy     = true
-  scsi_hardware       = "virtio-scsi-single"
-  vm_id               = lookup(var.vm_id_list, "sakinah-D05")
-  hook_script_file_id = proxmox_virtual_environment_file.script1.id
+# # SAKINAH
+# resource "proxmox_virtual_environment_vm" "sakinah-D05" {
+#   name                = "sakinah-D05"
+#   node_name           = "its"
+#   on_boot             = true
+#   stop_on_destroy     = true
+#   scsi_hardware       = "virtio-scsi-single"
+#   vm_id               = lookup(var.vm_id_list, "sakinah-D05")
+#   hook_script_file_id = proxmox_virtual_environment_file.script1.id
 
-  clone {
-    datastore_id = "local-lvm"
-    node_name    = "its"
-    vm_id        = 5555
-  }
+#   clone {
+#     datastore_id = "local-lvm"
+#     node_name    = "its"
+#     vm_id        = 5555
+#   }
 
-  agent {
-    enabled = true
-  }
+#   agent {
+#     enabled = true
+#   }
 
-  initialization {
-    ip_config { #eth0
-      ipv4 {
-        address = lookup(var.ip_list, "sakinah-D05-eth0")
-      }
-    }
-    ip_config { #eth1
-      ipv4 {
-        address = lookup(var.ip_list, "sakinah-D05-eth1")
-      }
-    }
-    user_account {
-      username = "ukashitam"
-      password = "hitamlegam"
-    }
-  }
+#   initialization {
+#     ip_config { #eth0
+#       ipv4 {
+#         address = lookup(var.ip_list, "sakinah-D05-eth0")
+#       }
+#     }
+#     ip_config { #eth1
+#       ipv4 {
+#         address = lookup(var.ip_list, "sakinah-D05-eth1")
+#       }
+#     }
+#     user_account {
+#       username = "ukashitam"
+#       password = "hitamlegam"
+#     }
+#   }
 
-  cpu {
-    cores = 1
-    type  = "x86-64-v2-AES"
-  }
+#   cpu {
+#     cores = 1
+#     type  = "x86-64-v2-AES"
+#   }
 
-  memory {
-    dedicated = 1024 # 1GB
-    floating  = 1024
-  }
+#   memory {
+#     dedicated = 1024 # 1GB
+#     floating  = 1024
+#   }
 
-  disk {
-    datastore_id = "local-lvm"
-    file_id      = "local:iso/focal-server-cloudimg-amd64.img"
-    file_format  = "raw"
-    interface    = "virtio0"
-    iothread     = true
-    size         = 3 # GB
-  }
+#   disk {
+#     datastore_id = "local-lvm"
+#     file_id      = "local:iso/focal-server-cloudimg-amd64.img"
+#     file_format  = "raw"
+#     interface    = "virtio0"
+#     iothread     = true
+#     size         = 3 # GB
+#   }
 
-  network_device {
-    enabled  = true
-    firewall = false
-    bridge   = "vmbr0"
-  }
-  network_device {
-    enabled  = true
-    firewall = false
-    bridge   = "vmbr0"
-  }
-}
+#   network_device {
+#     enabled  = true
+#     firewall = false
+#     bridge   = "vmbr0"
+#   }
+#   network_device {
+#     enabled  = true
+#     firewall = false
+#     bridge   = "vmbr0"
+#   }
+# }
