@@ -40,18 +40,11 @@ resource "proxmox_virtual_environment_file" "cloud_config-alfamart" {
     runcmd:
       - sysctl -w net.ipv4.ip_forward=1
       - echo 'net.ipv4.ip_forward=1' >> /etc/sysctl.conf
-      - apt update
-      - apt install -y netplan.io net-tools qemu-guest-agent
       - netplan apply
       - ip link set eth0 up 
       - ip link set eth1 up 
       - ip link set eth2 up 
-      - 192.168.5.8/30 via 192.168.5.6  
-      - 192.168.5.12/30 via 192.168.5.6  
-      - 192.168.5.16/30 via 192.168.5.6 
-      - 192.168.5.32/29 via 192.168.5.6  
-      - 192.168.5.40/29 via 192.168.5.6  
-      - 192.168.5.48/29 via 192.168.5.6 
+      - 0.0.0.0/0 via 192.168.5.6 #ALFAMARTviaINDOMARET
       - echo "Initialization complete" > /tmp/init_done
     EOF
 
@@ -82,18 +75,12 @@ resource "proxmox_virtual_environment_file" "cloud_config-indomaret" {
     runcmd:
       - sysctl -w net.ipv4.ip_forward=1
       - echo 'net.ipv4.ip_forward=1' >> /etc/sysctl.conf
-      - apt update
-      - apt install -y netplan.io net-tools qemu-guest-agent
       - netplan apply
       - ip link set eth0 up 
       - ip link set eth1 up 
-      - 192.168.5.0/30 via 192.168.5.5 
-      - 192.168.5.24/29 via 192.168.5.5 
-      - 192.168.5.12/30 via 192.168.5.10 
-      - 192.168.5.16/30 via 192.168.5.10 
-      - 192.168.5.32/29 via 192.168.5.10 
-      - 192.168.5.40/29 via 192.168.5.10 
-      - 192.168.5.48/29 via 192.168.5.10  
+      - 0.0.0.0/0 via 192.168.5.10 #INDOMARETviaFAMILYMART
+      - 192.168.5.24/29 via 192.168.5.5 #INDOMARETviaALFAMART
+      - 192.168.5.0/30 via 192.168.5.5 #INDOMARETviaALFAMART
       - echo "Initialization complete" > /tmp/init_done
     EOF
 
@@ -124,19 +111,17 @@ resource "proxmox_virtual_environment_file" "cloud_config-family-mart" {
     runcmd:
       - sysctl -w net.ipv4.ip_forward=1
       - echo 'net.ipv4.ip_forward=1' >> /etc/sysctl.conf
-      - apt update
-      - apt install -y netplan.io net-tools qemu-guest-agent
       - netplan apply
       - ip link set eth0 up 
       - ip link set eth1 up 
       - ip link set eth2 up 
-      - 192.168.5.0/30 via 192.168.5.9 
-      - 192.168.5.4/30 via 192.168.5.9 
-      - 192.168.5.24/29 via 192.168.5.9 
-      - 192.168.5.16/30 via 192.168.5.14 
-      - 192.168.5.32/29 via 192.168.5.14 
-      - 192.168.5.40/29 via 192.168.5.14 
-      - 192.168.5.48/29 via 192.168.5.14 
+      - 192.168.5.0/30 via 192.168.5.9  #FAMILYMARTviaINDOMARET
+      - 192.168.5.4/30 via 192.168.5.9  #FAMILYMARTviaINDOMARET
+      - 192.168.5.24/29 via 192.168.5.9 #FAMILYMARTviaINDOMARET
+      - 192.168.5.16/30 via 192.168.5.14 #FAMILYMARTviaSUPERINDO
+      - 192.168.5.32/29 via 192.168.5.14 #FAMILYMARTviaSUPERINDO
+      - 192.168.5.40/29 via 192.168.5.14 #FAMILYMARTviaSUPERINDO
+      - 192.168.5.48/29 via 192.168.5.14 #FAMILYMARTviaSUPERINDO
       - echo "Initialization complete" > /tmp/init_done
     EOF
 
@@ -167,18 +152,10 @@ resource "proxmox_virtual_environment_file" "cloud_config-its-mart" {
     runcmd:
       - sysctl -w net.ipv4.ip_forward=1
       - echo 'net.ipv4.ip_forward=1' >> /etc/sysctl.conf
-      - apt update
-      - apt install -y netplan.io net-tools qemu-guest-agent
       - netplan apply
       - ip link set eth0 up
       - ip link set eth1 up
-      - 192.168.5.0/30 via 192.168.5.41
-      - 192.168.5.4/30 via 192.168.5.41
-      - 192.168.5.8/30 via 192.168.5.41
-      - 192.168.5.12/30 via 192.168.5.41
-      - 192.168.5.16/30 via 192.168.5.41
-      - 192.168.5.24/29 via 192.168.5.41
-      - 192.168.5.32/29 via 192.168.5.41 
+      - 0.0.0.0/0 via 192.168.5.41 #ITSMARTviaSUPERINDO
       - echo "Initialization complete" > /tmp/init_done
     EOF
 
@@ -209,19 +186,13 @@ resource "proxmox_virtual_environment_file" "cloud_config-superindo" {
     runcmd:
       - sysctl -w net.ipv4.ip_forward=1
       - echo 'net.ipv4.ip_forward=1' >> /etc/sysctl.conf
-      - apt update
-      - apt install -y netplan.io net-tools qemu-guest-agent
       - netplan apply
       - ip link set eth0 up 
       - ip link set eth1 up 
       - ip link set eth2 up 
-      - 192.168.5.0/30 via 192.168.5.13 
-      - 192.168.5.4/30 via 192.168.5.13 
-      - 192.168.5.8/30 via 192.168.5.13 
-      - 192.168.5.24/29 via 192.168.5.13 
-      - 192.168.5.32/29 via 192.168.5.18 
-      - 192.168.5.40/29 via 192.168.5.21 
-      - 192.168.5.48/29 via 192.168.5.21
+      - 0.0.0.0/0 via 192.168.5.13 #SUPERINDOviaFAMILYMART
+      - 192.168.5.32/29 via 192.168.5.43 #SUPERINDOviaITSMART
+      - 192.168.5.48/29 via 192.168.5.33 #SUPERINDOviaSAKINAH
       - echo "Initialization complete" > /tmp/init_done
     EOF
 
@@ -252,18 +223,10 @@ resource "proxmox_virtual_environment_file" "cloud_config-sakinah" {
     runcmd:
       - sysctl -w net.ipv4.ip_forward=1
       - echo 'net.ipv4.ip_forward=1' >> /etc/sysctl.conf
-      - apt update
-      - apt install -y netplan.io net-tools qemu-guest-agent
       - netplan apply
       - ip link set eth0 up
       - ip link set eth1 up
-      - 192.168.5.0/30 via 192.168.5.17
-      - 192.168.5.4/30 via 192.168.5.17
-      - 192.168.5.8/30 via 192.168.5.17
-      - 192.168.5.12/30 via 192.168.5.17
-      - 192.168.5.24/29 via 192.168.5.17
-      - 192.168.5.40/29 via 192.168.5.17
-      - 192.168.5.48/29 via 192.168.5.17
+      - 0.0.0.0/0 via 192.168.5.17 #SAKINAHviaSUPERINDO
       - echo "Initialization complete" > /tmp/init_done
     EOF
 
