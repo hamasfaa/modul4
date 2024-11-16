@@ -36,17 +36,17 @@ variable "vm_id_list" {
 variable "ip_list" {
   type = map(string)
   default = {
-    "nasi-uduk-D05"      = "192.168.5.26/29"
-    "geprek-D05"         = "192.168.5.27/29"
+    "nasi-uduk-D05"      = "192.168.5.25/29"
+    "geprek-D05"         = "192.168.5.26/29"
     "kwetiaw-D05"        = "192.168.5.2/30"
-    "tahu-tek-D05"       = "192.168.5.50/29"
-    "sego-jamur-D05"     = "192.168.5.51/29"
+    "tahu-tek-D05"       = "192.168.5.51/29"
+    "sego-jamur-D05"     = "192.168.5.50/29"
     "ikan-fillet-D05"    = "192.168.5.42/29"
     "naspad-D05"         = "192.168.5.35/29"
     "pangsit-D05"        = "192.168.5.34/29"
     "alfamart-D05-eth0"  = "192.168.5.5/30"
-    "alfamart-D05-eth1"  = "192.168.5.25/29"
-    "alfamart-D05-eth2"  = "192.168.5.1/30"
+    "alfamart-D05-eth1"  = "192.168.5.1/29"
+    "alfamart-D05-eth2"  = "192.168.5.27/30"
     "indomaret-D05-eth0" = "192.168.5.9/30"
     "indomaret-D05-eth1" = "192.168.5.6/30"
     #"family-mart-D05-eth0" = H4H4H4H4
@@ -65,8 +65,8 @@ variable "ip_list" {
 variable "gateaway_list" {
   type = map(string)
   default = {
-    "nasi-uduk-D05"   = "192.168.5.25"
-    "geprek-D05"      = "192.168.5.25"
+    "nasi-uduk-D05"   = "192.168.5.27"
+    "geprek-D05"      = "192.168.5.27"
     "kwetiaw-D05"     = "192.168.5.1"
     "tahu-tek-D05"    = "192.168.5.49"
     "sego-jamur-D05"  = "192.168.5.49"

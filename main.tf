@@ -79,8 +79,8 @@ resource "proxmox_virtual_environment_file" "cloud_config-indomaret" {
       - ip link set eth0 up 
       - ip link set eth1 up 
       - 0.0.0.0/0 via 192.168.5.10 #INDOMARETviaFAMILYMART
-      - 192.168.5.24/29 via 192.168.5.5 #INDOMARETviaALFAMART
-      - 192.168.5.0/30 via 192.168.5.5 #INDOMARETviaALFAMART
+      - 192.168.5.24/29 via 192.168.5.5 #INDOMARETviaALFAMARTA1
+      - 192.168.5.0/30 via 192.168.5.5 #INDOMARETviaALFAMARTA2
       - echo "Initialization complete" > /tmp/init_done
     EOF
 
@@ -115,13 +115,13 @@ resource "proxmox_virtual_environment_file" "cloud_config-family-mart" {
       - ip link set eth0 up 
       - ip link set eth1 up 
       - ip link set eth2 up 
-      - 192.168.5.0/30 via 192.168.5.9  #FAMILYMARTviaINDOMARET
-      - 192.168.5.4/30 via 192.168.5.9  #FAMILYMARTviaINDOMARET
-      - 192.168.5.24/29 via 192.168.5.9 #FAMILYMARTviaINDOMARET
-      - 192.168.5.16/30 via 192.168.5.14 #FAMILYMARTviaSUPERINDO
-      - 192.168.5.32/29 via 192.168.5.14 #FAMILYMARTviaSUPERINDO
-      - 192.168.5.40/29 via 192.168.5.14 #FAMILYMARTviaSUPERINDO
-      - 192.168.5.48/29 via 192.168.5.14 #FAMILYMARTviaSUPERINDO
+      - 192.168.5.0/30 via 192.168.5.9  #FAMILYMARTviaINDOMARETA2
+      - 192.168.5.4/30 via 192.168.5.9  #FAMILYMARTviaINDOMARETA3
+      - 192.168.5.24/29 via 192.168.5.9 #FAMILYMARTviaINDOMARETA1
+      - 192.168.5.16/30 via 192.168.5.14 #FAMILYMARTviaSUPERINDOA6
+      - 192.168.5.32/29 via 192.168.5.14 #FAMILYMARTviaSUPERINDOA7
+      - 192.168.5.40/29 via 192.168.5.14 #FAMILYMARTviaSUPERINDOA8
+      - 192.168.5.48/29 via 192.168.5.14 #FAMILYMARTviaSUPERINDOA9
       - echo "Initialization complete" > /tmp/init_done
     EOF
 
@@ -191,8 +191,8 @@ resource "proxmox_virtual_environment_file" "cloud_config-superindo" {
       - ip link set eth1 up 
       - ip link set eth2 up 
       - 0.0.0.0/0 via 192.168.5.13 #SUPERINDOviaFAMILYMART
-      - 192.168.5.32/29 via 192.168.5.43 #SUPERINDOviaITSMART
-      - 192.168.5.48/29 via 192.168.5.33 #SUPERINDOviaSAKINAH
+      - 192.168.5.32/29 via 192.168.5.18 #SUPERINDOviaSAKINAHA7
+      - 192.168.5.48/29 via 192.168.5.43 #SUPERINDOviaITSMARTA9
       - echo "Initialization complete" > /tmp/init_done
     EOF
 
