@@ -45,8 +45,8 @@ variable "ip_list" {
     "naspad-D05"         = "192.168.5.35/29"
     "pangsit-D05"        = "192.168.5.34/29"
     "alfamart-D05-eth0"  = "192.168.5.5/30"
-    "alfamart-D05-eth1"  = "192.168.5.1/29"
-    "alfamart-D05-eth2"  = "192.168.5.27/30"
+    "alfamart-D05-eth1"  = "192.168.5.1/30"
+    "alfamart-D05-eth2"  = "192.168.5.27/29"
     "indomaret-D05-eth0" = "192.168.5.9/30"
     "indomaret-D05-eth1" = "192.168.5.6/30"
     #"family-mart-D05-eth0" = H4H4H4H4
